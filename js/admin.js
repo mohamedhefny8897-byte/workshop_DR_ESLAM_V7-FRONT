@@ -1,16 +1,16 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://tricky-zoos-say.loca.lt';
 let attendeesData = [];
 
 async function loadDashboard() {
     // جلب الإحصائيات
-    const statsRes = await fetch(`${API_URL}/api/admin/stats`);
+    const statsRes = await fetch(`${API_URL}/api/admin/stats`, { headers: { 'Bypass-Tunnel-Reminder': 'true' }});
     const stats = await statsRes.json();
     document.getElementById('statTotal').innerText = stats.total || 0;
     document.getElementById('statConfirmed').innerText = stats.confirmed || 0;
     document.getElementById('statPending').innerText = stats.pending || 0;
 
     // جلب المتدربين
-    const res = await fetch(`${API_URL}/api/admin/attendees`);
+    const res = await fetch(`${API_URL}/api/admin/attendees`, { headers: { 'Bypass-Tunnel-Reminder': 'true' }});
     attendeesData = await res.json();
     
     const tbody = document.getElementById('attendeesTableBody');
@@ -26,11 +26,8 @@ async function loadDashboard() {
         let receiptHtml = a.receipt_path ? `<a href="${API_URL}/${a.receipt_path}" target="_blank" style="color:var(--accent-color);"><i class="fa-solid fa-image"></i> عرض</a>` : '-';
         
         let badgeClass = a.status === 'مؤكد' ? 'badge confirmed' : 'badge pending';
-        
-        // زر التأكيد
         let confirmBtn = a.status !== 'مؤكد' ? `<button class="btn-primary btn-sm" onclick="confirmPayment(${a.id})"><i class="fa-solid fa-check"></i> تأكيد</button>` : '';
         
-        // زر الواتس
         let phoneForWa = a.phone.startsWith('0') ? '2' + a.phone : a.phone;
         let msg = encodeURIComponent(`مرحباً أ. ${a.name}، نؤكد على حضوركم ورشة عمل د. إسلام محمد القادمة. نلقاكم على خير.`);
         let waBtn = `<a href="https://wa.me/${phoneForWa}?text=${msg}" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> مراسلة</a>`;
@@ -52,7 +49,12 @@ async function loadDashboard() {
 async function confirmPayment(id) {
     if(!confirm('تأكيد الدفع/الحجز لهذا المتدرب؟')) return;
     await fetch(`${API_URL}/api/admin/attendees/${id}/status`, {
-        method: 'PUT', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({status: 'مؤكد'})
+        method: 'PUT', 
+        headers: {
+            'Content-Type': 'application/json',
+            'Bypass-Tunnel-Reminder': 'true'
+        }, 
+        body: JSON.stringify({status: 'مؤكد'})
     });
     loadDashboard();
 }

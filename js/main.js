@@ -43,7 +43,6 @@ function togglePaymentInfo() {
     }
 }
 
-// الاتصال الحقيقي بالباك إند
 async function submitRegistration(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
@@ -59,8 +58,9 @@ async function submitRegistration(e) {
     if(file) formData.append('receipt', file);
 
     try {
-        const res = await fetch('http://localhost:3000/api/register', {
+        const res = await fetch('https://tricky-zoos-say.loca.lt', {
             method: 'POST',
+            headers: { 'Bypass-Tunnel-Reminder': 'true' },
             body: formData
         });
         const data = await res.json();
