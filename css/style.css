@@ -1,0 +1,144 @@
+/* 
+   Dark Theme Premium UI for Workshop 
+   Colors: Deep Navy, Neon Blue/Cyan accents 
+*/
+:root {
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --primary-color: #3b82f6;
+    --accent-color: #38bdf8;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --font-heading: 'Tajawal', sans-serif;
+    --font-body: 'Cairo', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-body); }
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.text-center { text-align: center; }
+.full-width { width: 100%; }
+
+h1, h2, h3, h4 { font-family: var(--font-heading); }
+.highlight { color: var(--accent-color); font-weight: 900; }
+.highlight-text { background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #4f46e5);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6); }
+.btn-outline { background: transparent; border: 2px solid white; color: white; padding: 12px 20px; border-radius: 30px; cursor: pointer; transition: 0.3s; text-decoration: none; }
+.btn-outline:hover { background: white; color: var(--bg-dark); }
+.large-btn { padding: 15px 40px; font-size: 1.2rem; }
+
+/* Navbar */
+.navbar { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 0; transition: 0.4s; background: transparent; }
+.navbar.scrolled { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); padding: 15px 0; border-bottom: 1px solid var(--border-color); }
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.8rem; font-weight: 900; font-family: var(--font-heading); letter-spacing: 1px; }
+.nav-links a { color: var(--text-main); text-decoration: none; margin: 0 15px; font-weight: 600; transition: 0.3s; }
+.nav-links a:hover { color: var(--accent-color); }
+
+/* Hero Section */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding-top: 80px; overflow: hidden; }
+.hero::before {
+    content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px;
+    background: var(--primary-color); border-radius: 50%; filter: blur(150px); opacity: 0.3; z-index: 0;
+}
+.hero-container { display: flex; align-items: center; justify-content: space-between; gap: 50px; position: relative; z-index: 1; }
+.hero-text { flex: 1; }
+.badge { display: inline-block; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3); color: var(--accent-color); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; margin-bottom: 20px; }
+.hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+.hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 30px; }
+.hero-features { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
+.hero-features span { display: flex; align-items: center; gap: 8px; color: var(--text-main); font-weight: 600; background: var(--bg-card); padding: 8px 15px; border-radius: 8px; border: 1px solid var(--border-color); transition: 0.3s;}
+.hero-features i { color: var(--accent-color); }
+
+/* Map Location Link Style */
+.feature-link { text-decoration: none; }
+.location-badge { cursor: pointer; }
+.feature-link:hover .location-badge { border-color: var(--accent-color); box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); transform: translateY(-2px); }
+.location-icon { animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+
+.hero-image { flex: 1; }
+.glass-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 15px; border-radius: 20px; backdrop-filter: blur(10px); transform: rotate(3deg); transition: 0.5s; }
+.glass-card:hover { transform: rotate(0deg) translateY(-10px); }
+.glass-card img { width: 100%; border-radius: 15px; display: block; }
+
+/* Sections General */
+section { padding: 100px 0; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-title { font-size: 2.5rem; margin-bottom: 15px; }
+
+/* Lecturer Section */
+.lecturer-section { background: var(--bg-card); }
+.lecturer-grid { display: flex; align-items: center; gap: 60px; }
+.lecturer-img { flex: 1; position: relative; }
+.lecturer-img img { width: 100%; border-radius: 20px; border: 2px solid var(--border-color); }
+.experience-badge { position: absolute; bottom: -20px; right: -20px; background: var(--accent-color); color: var(--bg-dark); font-weight: 900; padding: 20px; border-radius: 50%; font-size: 1.2rem; text-align: center; line-height: 1.2; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+.lecturer-info { flex: 1.5; }
+.lecturer-name { font-size: 2rem; color: var(--accent-color); margin-bottom: 15px; }
+.lecturer-bio { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px; }
+
+/* Register Section */
+.register-container { max-width: 800px; margin: 0 auto; }
+.glass-form { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(15px); border: 1px solid var(--border-color); padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.input-group { margin-bottom: 25px; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--text-muted); }
+.input-group input, .input-group select { width: 100%; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); color: white; padding: 15px; border-radius: 10px; font-size: 1rem; transition: 0.3s; }
+.input-group input:focus, .input-group select:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2); }
+.payment-instructions { background: rgba(59, 130, 246, 0.1); border-right: 4px solid var(--primary-color); padding: 15px; border-radius: 8px; margin-bottom: 20px; color: #cbd5e1; }
+.submit-btn { width: 100%; font-size: 1.2rem; padding: 15px; justify-content: center; }
+.success-message { background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; padding: 15px; border-radius: 10px; text-align: center; margin-top: 20px; font-weight: bold; }
+
+/* Past Workshops */
+.gallery-grid { display: grid; gap: 30px; }
+.gallery-card { background: var(--bg-card); border-radius: 15px; overflow: hidden; border: 1px solid var(--border-color); transition: 0.4s; }
+.gallery-card:hover { transform: translateY(-10px); border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2); }
+.card-img { position: relative; overflow: hidden; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.gallery-card:hover .card-img img { transform: scale(1.1); }
+.card-overlay { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; }
+.gallery-card:hover .card-overlay { opacity: 1; }
+
+/* Footer */
+footer { background: #0b1120; text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); }
+
+/* Animations */
+.hidden-el { opacity: 0; visibility: hidden; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+.show-el { opacity: 1; visibility: visible; }
+.slide-up.hidden-el { transform: translateY(40px); }
+.slide-up.show-el { transform: translateY(0); }
+.fade-in.hidden-el { transform: scale(0.95); }
+.fade-in.show-el { transform: scale(1); }
+
+@media (max-width: 768px) {
+    .hero-container, .lecturer-grid, .form-grid { flex-direction: column; }
+    .hero h1 { font-size: 2.5rem; }
+    .gallery-grid { grid-template-columns: 1fr !important; }
+}

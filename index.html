@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورشة العمل المتقدمة | د. إسلام محمد</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar" id="navbar">
+        <div class="container nav-content">
+            <div class="logo"><span class="highlight">W</span>ork<span class="highlight">S</span>hop</div>
+            <nav class="nav-links">
+                <a href="#hero">الرئيسية</a>
+                <a href="#lecturer">المحاضر</a>
+                <a href="#register">التسجيل</a>
+                <a href="#past-workshops">ورش سابقة</a>
+            </nav>
+            <a href="#register" class="btn-primary">احجز مقعدك <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-container">
+            <div class="hero-text hidden-el slide-up">
+                <div class="badge">🔥 التسجيل متاح الآن بأسعار رمزية</div>
+                <h1>ورشة العمل الاحترافية مع <br><span class="highlight-text">د. إسلام محمد</span></h1>
+                <p>فرصة استثنائية لتطوير مهاراتك من خلال تطبيق عملي ومحتوى حصري.</p>
+                <div class="hero-features">
+                    <span><i class="fa-solid fa-calendar-check"></i> الجمعة القادمة</span>
+                    <!-- رابط الخريطة -->
+                    <a href="https://maps.google.com/?q=dummy_location" target="_blank" class="feature-link" title="اضغط لفتح خريطة المكان">
+                        <span class="location-badge"><i class="fa-solid fa-location-dot location-icon"></i> قاعة المؤتمرات (عرض الخريطة)</span>
+                    </a>
+                </div>
+                <a href="#register" class="btn-primary large-btn">سجل حضورك الآن</a>
+            </div>
+            <div class="hero-image hidden-el fade-in">
+                <div class="glass-card"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Workshop"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lecturer" class="lecturer-section">
+        <div class="container lecturer-grid">
+            <div class="lecturer-img hidden-el fade-in">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="Dr. Islam">
+                <div class="experience-badge">10+ سنوات خبرة</div>
+            </div>
+            <div class="lecturer-info hidden-el slide-up">
+                <h2 class="section-title">عن المحاضر</h2>
+                <h3 class="lecturer-name">د. إسلام محمد</h3>
+                <p class="lecturer-bio">استشاري وخبير معتمد في مجاله، قدم العديد من المحاضرات والورش التدريبية التي ساهمت في تطوير مئات المتدربين.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="register-section">
+        <div class="container">
+            <div class="section-header hidden-el slide-up">
+                <h2 class="section-title">احجز مقعدك الآن</h2>
+                <p>رسوم حضور رمزية لتغطية التكاليف. اختر طريقة الدفع الأنسب لك.</p>
+            </div>
+            <div class="register-container hidden-el slide-up">
+                <form id="workshopForm" onsubmit="submitRegistration(event)" class="glass-form">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>الاسم الرباعي</label>
+                            <input type="text" id="regName" required placeholder="كما سيُطبع على الشهادة">
+                        </div>
+                        <div class="input-group">
+                            <label>رقم الواتساب</label>
+                            <input type="tel" id="regPhone" required placeholder="01xxxxxxxxx">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>طريقة الدفع (رسوم الحضور: 150 ج.م)</label>
+                        <select id="payMethod" required onchange="togglePaymentInfo()">
+                            <option value="" disabled selected>-- اختر وسيلة الدفع --</option>
+                            <option value="instapay">إنستاباي (InstaPay)</option>
+                            <option value="wallet">محفظة إلكترونية (فودافون كاش)</option>
+                            <option value="cash">الدفع نقداً (عند الحضور للقاعة)</option>
+                        </select>
+                    </div>
+                    <div id="paymentInstructions" class="payment-instructions" style="display: none;"></div>
+                    <div class="input-group" id="receiptUpload" style="display: none;">
+                        <label>صورة إيصال التحويل</label>
+                        <input type="file" accept="image/*" id="receiptFile">
+                    </div>
+                    <button type="submit" class="btn-primary submit-btn" id="submitBtn">تأكيد التسجيل</button>
+                    <div id="successMessage" class="success-message" style="display: none;">
+                        <i class="fa-solid fa-circle-check"></i> تم تسجيل بياناتك بنجاح! نلقاك في الورشة.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الورش السابقة المحدث -->
+    <section id="past-workshops" class="past-workshops-section">
+        <div class="container">
+            <div class="section-header hidden-el slide-up">
+                <h2 class="section-title">ورش العمل السابقة</h2>
+                <p>فاتتك الورشة؟ يمكنك مشاهدة التسجيلات أو استعراض المادة العلمية للورش السابقة.</p>
+            </div>
+
+            <div class="gallery-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                
+                <!-- ورشة الجمعة الماضية -->
+                <div class="gallery-card hidden-el slide-up">
+                    <div class="card-img" style="height: 250px;">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" alt="Past Workshop 1">
+                        <div class="card-overlay">
+                            <i class="fa-solid fa-play" style="font-size: 3rem; color: white; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+                    <div class="card-info text-center" style="padding: 25px;">
+                        <span class="badge" style="background: rgba(56, 189, 248, 0.1); color: var(--accent-color); margin-bottom: 10px; display: inline-block;">الجمعة الماضية</span>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">الجزء الثاني: التطبيق العملي للبيانات</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">تمت مناقشة استراتيجيات السوق وكيفية تحليل البيانات الحية.</p>
+                        <!-- رابط ورشة الجمعة الماضية -->
+                        <a href="#dummy-link-friday-1" class="btn-outline full-width text-center" style="display: block;">
+                            <i class="fa-solid fa-video"></i> مشاهدة التسجيل والمادة العلمية
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ورشة الجمعة قبل الماضية -->
+                <div class="gallery-card hidden-el slide-up" style="transition-delay: 0.2s">
+                    <div class="card-img" style="height: 250px;">
+                        <img src="https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?auto=format&fit=crop&w=800&q=80" alt="Past Workshop 2">
+                        <div class="card-overlay">
+                            <i class="fa-solid fa-play" style="font-size: 3rem; color: white; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+                    <div class="card-info text-center" style="padding: 25px;">
+                        <span class="badge" style="background: rgba(56, 189, 248, 0.1); color: var(--accent-color); margin-bottom: 10px; display: inline-block;">الجمعة قبل الماضية</span>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">الجزء الأول: أساسيات النجاح المهني</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">المحاضرة الافتتاحية للمسار التدريبي، وتشمل تأسيس العقلية.</p>
+                        <!-- رابط ورشة الجمعة قبل الماضية -->
+                        <a href="#dummy-link-friday-2" class="btn-outline full-width text-center" style="display: block;">
+                            <i class="fa-solid fa-video"></i> مشاهدة التسجيل والمادة العلمية
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة &copy; 2026 | تطوير وتصميم كيمو | <a href="admin.html" style="color:var(--text-muted); text-decoration:none;">إدارة الورشة</a></p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
